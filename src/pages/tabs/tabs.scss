@@ -1,0 +1,37 @@
+page-tabs {
+  img {
+    object-fit: cover !important;
+}
+  .tabs-ios .tab-button[aria-selected=true] .tab-button-icon {
+    color: rgb(252, 246, 246);
+  }
+  .tabs-ios .tabbar {
+    background: #2A5D67 !important;
+  }
+  .tabs-ios .tab-button[aria-selected=true] {
+    background-color: #171332 !important;
+    color: #f4f4f4;
+  }
+  .tabs-ios .tab-button-icon {
+    color: #f4f4f4;
+  }
+  .tabs-ios .tab-button {
+    color: #f4f4f4;
+  } /////////////////////////////////////////////////
+  .tabs-md .tab-button[aria-selected=true] .tab-button-icon {
+    color: rgb(252, 246, 246);
+  }
+  .tabs-md .tabbar {
+    background: #2A5D67 !important;
+  }
+  .tabs-md .tab-button[aria-selected=true] {
+    background-color: #171332 !important;
+    color: #f4f4f4;
+  }
+  .tabs-md .tab-button-icon {
+    color: #f4f4f4;
+  }
+  .tabs-md .tab-button {
+    color: #f4f4f4;
+  }
+}

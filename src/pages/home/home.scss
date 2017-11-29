@@ -1,0 +1,111 @@
+page-home {
+  //   .font-jjgreen {
+  //     width: 100vh !important;
+  //     height: 14vh !important;
+  //     margin-bottom: -7px;
+  //     min-width: 60%;
+  //     text-align: center;
+  //   }
+  img {
+    object-fit: cover !important;
+}
+  .logoimg {
+    margin-top: 10px;
+    margin-bottom: -15px;
+    width: 70% !important;
+    height: 100% !important;
+  }
+  ion-content.has-refresher>.scroll-content {
+    // background-color: #000;
+    background-image: url('../assets/image/rice.png');
+    margin-top: 50px !important;
+    margin-bottom: 49px !important;
+  }
+  .card {
+    margin: 12px;
+    border-radius: 2px;
+    width: calc(100% - 24px);
+    font-size: 1.4rem;
+    background: rgba(0, 0, 0, 0.34);
+    box-shadow: 0 1px 2px rgba(68, 19, 19, 0.3);
+    margin-top: 4px;
+  }
+  .col {
+    padding: 3px;
+    width: 100%;
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 100%;
+  }
+  .iconHome {
+    background-color: #5c926e;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    color: #f4f4f4;
+    padding-top: 6px;
+    margin-top: 4px;
+  }
+  .sal {
+    font-size: 13px;
+    font-family: inherit;
+    line-height: normal;
+    color: #fff;
+    font-weight: 600;
+  }
+  .THB {
+    font-size: 18px;
+    font-family: inherit;
+    line-height: normal;
+    color: #e13838;
+    font-weight: 700;
+  }
+  .col {
+    /* padding: 5px; */
+    position: relative;
+    /* width: 100%; */
+    margin: 0;
+    min-height: 1px;
+    /* -webkit-flex-basis: 0; */
+    -ms-flex-preferred-size: 0;
+    /* flex-basis: 0; */
+    /* -webkit-box-flex: 1; */
+    /* -webkit-flex-grow: 1; */
+    -ms-flex-positive: 1;
+    /* flex-grow: 1; */
+    /* max-width: 100%; */
+  }
+  ion-navbar {
+    ion-item {
+      background-color: transparent !important;
+      color: white !important;
+      text-align: center !important;
+      .item-inner {
+        border-bottom: none !important;
+      }
+    }
+  }
+  .iconHome {
+    font-size: 30px;
+  }
+  #pcate {
+    white-space: nowrap;
+    width: 8em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  img {
+    max-width: 100%;
+    border: 0;
+    width: inherit;
+  }
+  .card-header {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #f4f4f4;
+    padding: 16px;
+  }
+}

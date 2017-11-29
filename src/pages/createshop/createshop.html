@@ -1,0 +1,65 @@
+<!--
+  Generated template for the CreateshopPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="header-cs">
+    <ion-title>{{item && item._id ? 'Edit Shop' : 'Create Shop'}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="canceldissmis()">
+        <ion-icon name="close-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-upload-images [maximumImagesCount]="1" [images]="pImages" [isShowUpload]="false" (resImage)="resImageEvent($event)"></ion-upload-images>
+    <ion-row wrap id="wrap">
+      <ion-col no-padding col-12 id="colName">
+        <ion-row>
+          <ion-item>
+            <ion-label floating>Name*</ion-label>
+            <ion-input type="text" [(ngModel)]="item.name"></ion-input>
+          </ion-item>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row id="detail">
+      <ion-col no-padding col-12 id="colDetail">
+        <ion-row>
+          <ion-item>
+            <ion-label floating>Detail*</ion-label>
+            <ion-input type="text" [(ngModel)]="item.detail"></ion-input>
+          </ion-item>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-row>
+          <ion-item-divider>
+            <ion-icon item-start name="call"></ion-icon>
+            <ion-input type="text" placeholder="Tel" [(ngModel)]="item.tel"></ion-input>
+          </ion-item-divider>
+          <ion-item-divider>
+            <ion-icon item-start name="mail"></ion-icon>
+            <ion-input type="text" placeholder="Email" [(ngModel)]="item.email"></ion-input>
+          </ion-item-divider>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col col-6>
+          <button ion-button block color="header-cs" (click)="createShop(item)" [disabled]="!item.name || !item.detail || !item.image">Submit</button>
+        </ion-col>
+        <ion-col col-6>
+          <button ion-button block color="danger" class="button-red" (click)="canceldissmis()">Cancel</button>
+        </ion-col>
+      </ion-row>
+</ion-content>

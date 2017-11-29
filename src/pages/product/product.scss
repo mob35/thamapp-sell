@@ -1,0 +1,83 @@
+page-product {
+    img {
+        object-fit: cover !important;
+    }
+    ul {
+        padding: 0px;
+        margin-top: 0px;
+        &.rating li {
+            padding: 0px 0px !important;
+            background: none;
+            color: #52a97a;
+            ion-icon {
+                font-size: 20px;
+            }
+        }
+    }
+    .ion-ios-star:before {
+        content: "\f1aa" !important;
+    }
+    .ion-ios-star-outline:before {
+        content: "\f1a9" !important;
+    }
+    .ion-md-star:before {
+        content: "\f1aa" !important;
+    }
+    .ion-md-star-outline:before {
+        content: "\f1a9" !important;
+    }
+    .item-ios h2 {
+        margin: 0 0 2px;
+        font-size: 1.9rem;
+        font-weight: normal;
+        color: #7f3f00;
+    }
+    .item-md h2 {
+        margin: 2px 0;
+        font-size: 1.6rem;
+        font-weight: normal;
+        color: #7f3f00;
+    }
+    .item-md p {
+        margin: 0 0 2px;
+        overflow: inherit;
+        font-size: 1.4rem;
+        line-height: normal;
+        text-overflow: inherit;
+        color: #d8625d;
+    }
+    .item-ios p {
+        overflow: inherit;
+        font-size: 1.4rem;
+        line-height: normal;
+        text-overflow: inherit;
+        color: #f53d3d;
+        margin: 0 0 2px;
+    }
+    #price {
+        text-decoration: line-through;
+        color: #bdbdbd;
+        font-size: 13px;
+    }
+    #percentofdiscount {
+        font-size: 13px;
+    }
+    ion-navbar {
+        ion-item {
+            background-color: transparent !important;
+            color: white !important;
+            text-align: center !important;
+            .item-inner {
+                border-bottom: none !important;
+            }
+        }
+    }
+    .fab-md {
+        color: #fff;
+        background-color: #2A5D67 !important;
+    }
+    .fab-ios {
+        color: #fff;
+        background-color: #2A5D67 !important;
+    }
+}

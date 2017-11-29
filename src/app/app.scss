@@ -1,0 +1,130 @@
+// http://ionicframework.com/docs/theming/
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+img {
+  object-fit: cover !important;
+}
+@font-face {
+  font-family: 'icomoon-thamturakit';
+  src: url('../assets/fonts/icomoon-thamturakit.eot?xdgxqz');
+  src: url('../assets/fonts/icomoon-thamturakit.eot?xdgxqz#iefix') format('embedded-opentype'), url('../assets/fonts/icomoon-thamturakit.ttf?xdgxqz') format('truetype'), url('../assets/fonts/icomoon-thamturakit.woff?xdgxqz') format('woff'), url('../assets/fonts/icomoon-thamturakit.svg?xdgxqz#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class*="icon-green-logo"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon-thamturakit' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  color: white;
+  font-size: 80px;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-green-logo:before {
+  content: "\e188";
+  color: white;
+  font-size: 50px; // font-weight: 100;
+}
+
+//end iconMoon
+// loading
+@keyframes lds-eclipse {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes lds-eclipse {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.lds-eclipse {
+  position: relative;
+}
+
+.lds-eclipse div.spin {
+  position: absolute;
+  -webkit-animation: lds-eclipse 1s linear infinite;
+  animation: lds-eclipse 1s linear infinite;
+  width: 160px;
+  height: 160px;
+  top: 20px;
+  left: -20px;
+  border-radius: 50%;
+  box-shadow: 0 4px 0 0 #5cb85c;
+  -webkit-transform-origin: 80px 82px;
+  transform-origin: 80px 82px;
+}
+
+.lds-eclipse {
+  width: 120px !important;
+  height: 120px !important;
+  -webkit-transform: translate(-60px, -60px) scale(0.6) translate(60px, 60px);
+  transform: translate(-60px, -60px) scale(0.6) translate(60px, 60px);
+}
+
+.div-image {
+  height: 100% !important;
+  width: 100% !important;
+  text-align: center;
+  padding-top: 40px;
+}
+
+.loading-image {
+  width: 100% !important;
+}
+
+.loading-md .loading-wrapper {
+  border-radius: 200%;
+  max-width: 120px;
+  max-height: 120px;
+  text-align: center !important;
+  padding: 24px;
+}
+
+.loading-ios .loading-wrapper {
+  border-radius: 200%;
+  max-width: 120px;
+  max-height: 120px;
+  text-align: center !important;
+  padding: 24px;
+}

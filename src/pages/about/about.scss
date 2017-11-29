@@ -1,0 +1,12 @@
+page-about {
+  ion-navbar {
+    ion-item {
+      background-color: transparent !important;
+      color: white !important;
+      text-align: center !important;
+      .item-inner {
+        border-bottom: none !important;
+      }
+    }
+  }
+}

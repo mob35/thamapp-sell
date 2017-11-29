@@ -1,0 +1,132 @@
+page-order {
+  // .segment-button.active-page {
+  //       color: #ffffff !important;
+  //       background-color: #558866  !important;
+  //       border-bottom: 4px solid !important;
+  //   }
+  img {
+    object-fit: cover !important;
+}
+  #segmentOrd {
+    display: block;
+    overflow-x: scroll !important;
+    white-space: nowrap !important;
+    background-color: #171332 !important;
+    #segmentOrdBtn {
+      display: inline-block !important;
+      width: auto !important; //     padding: 16px;
+    }
+  }
+  .grid {
+    padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    background-color: #171332;
+  }
+  .col {
+    // padding: 1px;
+    position: relative;
+    width: 100%;
+    margin: 0;
+    min-height: 1px;
+    -webkit-flex-basis: 0;
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 100%;
+  }
+  img {
+    max-width: 100%;
+    border: 0;
+    max-height: 100%;
+    width: 56px;
+    height: 56px;
+  }
+  .item-ios p {
+    font-size: 1.4rem;
+    line-height: normal;
+    color: #8e9093;
+    margin: 0 0 2px;
+    white-space: nowrap;
+    width: 12em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  #pName {
+    font-size: 1.7rem;
+    line-height: normal;
+    color: #7f3f00;
+    margin: 0 0 2px;
+    white-space: nowrap;
+    width: 12em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  #pQty {
+    font-size: 1.5rem;
+    line-height: normal; //color: #ff0000;
+    margin: 0 0 2px;
+    white-space: nowrap;
+    width: 12em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  #pPrice {
+    font-size: 1.4rem;
+    line-height: normal;
+    color: #000;
+    margin: 0 0 2px;
+    white-space: nowrap;
+    width: 12em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  #pStatus {
+    font-size: 1.5rem;
+    line-height: normal;
+    color: #999;
+    margin: 0 0 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  #price {
+    text-decoration: line-through;
+    color: #bdbdbd;
+    font-size: 13px;
+  }
+  #percentofdiscount {
+    font-size: 13px;
+    color: #ff0000;
+  }
+  #promotionprice {
+    color: #ff0000; //font-size: 16px;
+  }
+  #priceNormal {
+    color: #ff0000;
+    font-size: 16px;
+  }
+  ion-navbar {
+    ion-item {
+      background-color: transparent !important;
+      color: white !important;
+      text-align: center !important;
+      .item-inner {
+        border-bottom: none !important;
+      }
+    }
+  }
+}

@@ -1,0 +1,113 @@
+page-order-detail {
+  ion-content {
+    height: 110%;
+    margin-top: -56px;
+  }
+  .back-button {
+    color: rgb(194, 194, 194);
+  }
+  img {
+    object-fit: cover !important;
+  }
+  #pName {
+    font-size: 2rem;
+    line-height: normal;
+    color: #000;
+    margin: 0 0 2px;
+    text-overflow: ellipsis;
+  }
+  ul {
+    padding: 0px;
+    margin-top: 0px;
+    &.rating li {
+      padding: 0px 0px !important;
+      background: none;
+      color: #ffb400;
+      ion-icon {
+        font-size: 20px;
+      }
+    }
+  }
+  .item-ios h3,
+  .item-ios h4,
+  .item-ios h5,
+  .item-ios h6 {
+    margin: 0 0 3px;
+    font-size: 1.8rem;
+    font-weight: normal;
+    line-height: normal;
+    background-color: #eae8e8;
+  }
+  ion-icon {
+    display: inline-block;
+    font-size: 1.5em;
+    padding-right: 12px;
+  }
+  h4 {
+    font-size: 2rem;
+    color: #ff0000;
+  }
+  #delName {
+    color: #a9a8a8;
+    font-size: 1.4rem;
+  }
+  #delDetail {
+    color: #a9a8a8;
+    font-size: 1.4rem;
+  }
+  #delPrice {
+    color: #a9a8a8;
+    font-size: 1.4rem;
+  }
+  #shipAddress {
+    color: #a9a8a8;
+    font-size: 1.4rem;
+  }
+  #shipSubdistrict {
+    color: #a9a8a8;
+    font-size: 1.4rem;
+  }
+  #shipDistrict {
+    color: #a9a8a8;
+    font-size: 1.4rem;
+  }
+  #shipProvince {
+    color: #a9a8a8;
+    font-size: 1.4rem;
+  }
+  #shipPostcode {
+    color: #a9a8a8;
+    font-size: 1.4rem;
+  }
+  #btnStatus {
+    background-color: #5c926e;
+  }
+  #btnReject {
+    background-color: #d8625d;
+  }
+  img {
+    /* max-width: 100%; */
+    /* border: 0; */
+    width: 100%;
+    max-width: 100%;
+    height: 300px;
+    max-height: 100%;
+  }
+  #price {
+    text-decoration: line-through;
+    color: #bdbdbd;
+    font-size: 13px;
+  }
+  #percentofdiscount {
+    font-size: 13px;
+    color: #ff0000;
+  }
+  #promotionprice {
+    color: #ff0000;
+    font-size: 16px;
+  }
+  #priceNormal {
+    color: #ff0000;
+    font-size: 16px;
+  }
+}

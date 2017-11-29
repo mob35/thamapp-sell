@@ -1,0 +1,123 @@
+<ion-header>
+  <ion-navbar color="header-cs">
+    <button ion-button menuToggle icon-only>
+      <ion-icon name="md-list"></ion-icon>
+    </button>
+    <ion-item>
+      Home
+      <ion-avatar item-end *ngIf="shop">
+        <img src="{{ shop.image }}">
+      </ion-avatar>
+    </ion-item>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+  <div *ngIf="shop">
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh">            
+      <!-- <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing..."> -->
+      </ion-refresher-content>
+    </ion-refresher>
+    <ion-row no-padding>
+      <ion-col col-12 text-center>
+        <img class="logoimg" src="./assets/image/nameapp.png">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card text-center>
+          <ion-row>
+            <ion-col col-12>
+              <ion-icon class="iconHome" name="md-cart" item-start></ion-icon>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12>
+              <label class="sal" for="">Daily Sales</label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12>
+              <p class="THB" for="">{{homeData.items.day.amount}} THB</p>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card text-center>
+          <ion-row>
+            <ion-col col-12>
+              <ion-icon class="iconHome" name="md-calendar" item-start></ion-icon>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12>
+              <label class="sal" for="">Monthly Sales</label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12>
+              <p class="THB" for="">{{homeData.items.month.amount}} THB</p>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card text-center>
+          <ion-row>
+            <ion-col col-12>
+              <ion-icon class="iconHome" name="md-trending-up" item-start></ion-icon>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12>
+              <label class="sal" for="">Yearly Sales</label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12>
+              <p class="THB" for="">{{homeData.items.year.amount}} THB</p>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card text-center>
+          <ion-row>
+            <ion-col col-12>
+              <ion-icon class="iconHome" name="md-stats" item-start></ion-icon>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12>
+              <label class="sal" for="">Category Population</label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12>
+              <p class="THB" id="pcate">{{homeData.items.categories.length > 0 ? homeData.items.categories[0].cate : 'No Data'}}</p>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-card>
+      <ion-card-header>
+        Sales
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #lineCanvas></canvas>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div *ngIf="!shop">
+    <ion-row>
+      <ion-col col-12>
+        <img src="./assets/image/please.png" menuToggle>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

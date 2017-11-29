@@ -1,0 +1,31 @@
+<!--
+  Generated template for the NotificationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="header-cs">
+    <button ion-button menuToggle icon-only>
+      <ion-icon name="md-list"></ion-icon>
+    </button>
+    <ion-item>
+      Notifications
+      <ion-avatar item-end *ngIf="shop">
+        <img src="{{ shop.image }}">
+      </ion-avatar>
+    </ion-item>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let noti of notifications">
+      <h3>{{ noti.message }}</h3>
+      <p>{{ noti.date | moment}}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>

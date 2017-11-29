@@ -1,0 +1,20 @@
+<ion-menu [content]="content">
+    <ion-header>
+        <ion-toolbar>
+            <ion-title>ร้านค้าของคุณ</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <div *ngIf="shopList && shopList.length > 0">
+            <ion-item *ngFor="let item of shopList" (click)="selectShop(item)" menuClose>
+                <ion-avatar item-left>
+                    <img [src]="item.image">
+                </ion-avatar>
+                <h2>{{item.name}}</h2>
+                <ion-icon item-end name="md-checkmark" *ngIf="isShow(item._id)"></ion-icon>
+            </ion-item>
+        </div>
+    </ion-content>
+</ion-menu>
+
+<ion-nav id="nav" #content [root]="rootPage"></ion-nav>

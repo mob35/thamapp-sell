@@ -1,2 +1,1 @@
-# thamapp-sell
-thamapp-sell
+# thamapp-seller
