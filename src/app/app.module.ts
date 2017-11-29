@@ -34,6 +34,7 @@ import { ShopDetailPage } from '../pages/shop-detail/shop-detail';
 import { LoadingProvider } from '../providers/loading/loading';
 import { MomentPipe } from "../pipes/moment/moment";
 import { IonDetailProductComponent } from "../components/ion-detail-product/ion-detail-product";
+import { ThamappAuthenProvider } from '../providers/thamapp-authen/thamapp-authen';
 
 @NgModule({
   declarations: [
@@ -107,7 +108,8 @@ import { IonDetailProductComponent } from "../components/ion-detail-product/ion-
     ImagePicker,
     Base64,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    LoadingProvider
+    LoadingProvider,
+    ThamappAuthenProvider
   ]
 })
 export class AppModule { }

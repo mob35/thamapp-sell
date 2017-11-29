@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 import { AuthenService } from "@ngcommerce/core";
 import { LoadingProvider } from '../../providers/loading/loading';
+import { TabsPage } from '../tabs/tabs';
 
 /**
  * Generated class for the RegisterPage page.
@@ -21,8 +22,12 @@ export class RegisterPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public service: AuthenService,
-    public loadingCtrl: LoadingProvider
+    public loadingCtrl: LoadingProvider,
+    public app: App,
   ) {
+    if (this.navParams.data && this.navParams.data !== undefined) {
+      this.user.tel = this.navParams.data;
+    }
   }
 
   ionViewDidLoad() {
@@ -32,13 +37,16 @@ export class RegisterPage {
     let newUser = this.user;
     newUser.firstName = this.user.first_name;
     newUser.lastName = this.user.last_name;
-
+    newUser.username = this.user.tel;
+    newUser.password = 'Usr#Pass1234';
     // alert(JSON.stringify(newUser));
     this.loadingCtrl.onLoading();
     this.service.signUp(newUser).then(data => {
+      window.localStorage.setItem('token',data.loginToken);
+      window.localStorage.setItem('thamappseller', JSON.stringify(data));
       // alert(JSON.stringify(data));
       this.loadingCtrl.dismiss();
-      this.navCtrl.pop();
+      this.app.getRootNav().setRoot(TabsPage);
     }).catch(e => {
       this.loadingCtrl.dismiss();
       alert("<pre>" + JSON.stringify(e));

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, App } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 import { AuthenService, SignupModel } from "@ngcommerce/core";
 import { OneSignal } from '@ionic-native/onesignal';
 import { TabsPage } from '../tabs/tabs';
 import { LoadingProvider } from '../../providers/loading/loading';
+import { ThamappAuthenProvider } from '../../providers/thamapp-authen/thamapp-authen';
 /**
  * Generated class for the LoginPage page.
  *
@@ -20,46 +21,83 @@ import { LoadingProvider } from '../../providers/loading/loading';
 export class LoginPage {
   credential: any = {};
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     public authenService: AuthenService,
     public oneSignal: OneSignal,
     public platform: Platform,
-    public loadingCtrl : LoadingProvider
+    public thamappAuthenService: ThamappAuthenProvider,
+    public app: App,
+    public loadingCtrl: LoadingProvider
   ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
-  login() {
-    
-        // window.localStorage.removeItem('shop');
-        // window.localStorage.removeItem('jjuserbuyer');
-        this.loadingCtrl.onLoading();
-        this.authenService.signIn(this.credential).then(data => {
+  login(data) {
+    this.loadingCtrl.onLoading();
+    this.thamappAuthenService.checkUserByTel(data).then((res) => {
+      if (res) {
+        let user = {
+          username: data,
+          password: 'Usr#Pass1234'
+        }
+        // this.loadingCtrl.onLoading();
+        this.authenService.signIn(user).then((data) => {
           window.localStorage.setItem('thamappseller', JSON.stringify(data));
-    
           if (this.platform.is('cordova')) {
             this.oneSignal.getIds().then((data) => {
               this.authenService.pushNotificationUser({ id: data.userId });
             });
           }
-    
+          // setTimeout(function () {
+          // this.navCtrl.setRoot(TabsPage);
           this.loadingCtrl.dismiss();
-          this.navCtrl.push(TabsPage);      
-          // this.viewCtrl.dismiss();
-          
-    
-          // alert(JSON.stringify(data));
-        }).catch(e => {
+          this.app.getRootNav().setRoot(TabsPage);
+        }, (error) => {
           this.loadingCtrl.dismiss();
-          alert(JSON.parse(e._body).message);
+          alert(JSON.parse(error._body).message);
+          // this.loadingCtrl.dismiss();
         });
+      } else {
+        this.loadingCtrl.dismiss();
+        this.register(data);
       }
+    }, (err) => {
+      this.loadingCtrl.dismiss();
+      alert(JSON.parse(err._body).message);
+    });
 
-  register() {
-    this.navCtrl.push(RegisterPage);
+  }
+  // login() {
+
+  //   // window.localStorage.removeItem('shop');
+  //   // window.localStorage.removeItem('jjuserbuyer');
+  //   this.loadingCtrl.onLoading();
+  //   this.authenService.signIn(this.credential).then(data => {
+  //     window.localStorage.setItem('thamappseller', JSON.stringify(data));
+
+  //     if (this.platform.is('cordova')) {
+  //       this.oneSignal.getIds().then((data) => {
+  //         this.authenService.pushNotificationUser({ id: data.userId });
+  //       });
+  //     }
+
+  //     this.loadingCtrl.dismiss();
+  //     this.navCtrl.push(TabsPage);
+  //     // this.viewCtrl.dismiss();
+
+
+  //     // alert(JSON.stringify(data));
+  //   }).catch(e => {
+  //     this.loadingCtrl.dismiss();
+  //     alert(JSON.parse(e._body).message);
+  //   });
+  // }
+
+  register(data) {
+    this.navCtrl.push(RegisterPage,data);
   }
 
 }

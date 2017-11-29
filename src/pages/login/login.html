@@ -12,8 +12,26 @@
 
 </ion-header>
 
-
 <ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Phone Number</ion-label>
+      <ion-input type="text" [(ngModel)]="tel"></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-row>
+    <ion-col>
+      <button [disabled]="!tel" id="btnlogin" color="submit" ion-button block (click)="login(tel)">Login</button>
+    </ion-col>
+  </ion-row>
+  <!-- <ion-row>
+    <ion-col>
+      <button ion-button block color="btn-facebook" (click)="loginFb()">
+        <ion-icon name="logo-facebook"></ion-icon>Login with Facebook</button>
+    </ion-col>
+  </ion-row> -->
+</ion-content>
+<!-- <ion-content>
   <ion-list>
     <ion-item>
       <ion-label floating>Username</ion-label>
@@ -34,9 +52,4 @@
       <button ion-button block color="danger" (click)="register()" block>Register</button>
     </ion-col>
   </ion-row>
-  <!-- <ion-row>
-    <ion-col>
-      <button ion-button block color="btn-facebook" (click)="loginfb()" block>login with Facebook</button>
-    </ion-col>
-  </ion-row> -->
-</ion-content>
+</ion-content> -->
