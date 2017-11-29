@@ -14,6 +14,12 @@ page-product {
             }
         }
     }
+    ion-content.has-refresher>.scroll-content {
+        // background-color: #000;
+        background-image: url('../assets/image/rice.png');
+        margin-top: 50px !important;
+        margin-bottom: 49px !important;
+      }
     .ion-ios-star:before {
         content: "\f1aa" !important;
     }
