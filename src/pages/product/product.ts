@@ -5,6 +5,7 @@ import { ProductListModel, ProductService, ShopModel } from "@ngcommerce/core";
 import { LoginPage } from '../login/login';
 import { ProductDetailPage } from '../product-detail/product-detail';
 import { LoadingProvider } from '../../providers/loading/loading';
+import { Dialogs } from '@ionic-native/dialogs';
 
 /**
  * Generated class for the ProductPage page.
@@ -35,7 +36,9 @@ export class ProductPage {
     public loadingCtrl: LoadingProvider,
     // public loadingCtrl: LoadingController,
     public app: App,
-    public events: Events
+    public events: Events,
+    public dialogs: Dialogs
+    
   ) {
     events.subscribe('notification:received', () => {
       this.shop = JSON.parse(window.localStorage.getItem('shop'));
@@ -90,7 +93,9 @@ export class ProductPage {
           this.getProduct(this.shop);
         }, (err) => {
           this.loadingCtrl.dismiss();
-          alert(JSON.parse(err._body).message);
+          this.dialogs.alert(JSON.parse(err._body).message, 'Product', 'OK')
+          .then(() => console.log('Dialog dismissed'))
+          .catch(e => console.log('Error displaying dialog', e));
         });
       }
     });

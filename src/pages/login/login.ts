@@ -6,6 +6,7 @@ import { OneSignal } from '@ionic-native/onesignal';
 import { TabsPage } from '../tabs/tabs';
 import { LoadingProvider } from '../../providers/loading/loading';
 import { ThamappAuthenProvider } from '../../providers/thamapp-authen/thamapp-authen';
+import { Dialogs } from '@ionic-native/dialogs';
 /**
  * Generated class for the LoginPage page.
  *
@@ -28,7 +29,8 @@ export class LoginPage {
     public platform: Platform,
     public thamappAuthenService: ThamappAuthenProvider,
     public app: App,
-    public loadingCtrl: LoadingProvider
+    public loadingCtrl: LoadingProvider,
+    public dialogs: Dialogs
   ) {
   }
 
@@ -57,7 +59,9 @@ export class LoginPage {
           this.app.getRootNav().setRoot(TabsPage);
         }, (error) => {
           this.loadingCtrl.dismiss();
-          alert(JSON.parse(error._body).message);
+          this.dialogs.alert(JSON.parse(error._body).message, 'Login', 'OK')
+          .then(() => console.log('Dialog dismissed'))
+          .catch(e => console.log('Error displaying dialog', e));
           // this.loadingCtrl.dismiss();
         });
       } else {
@@ -66,7 +70,9 @@ export class LoginPage {
       }
     }, (err) => {
       this.loadingCtrl.dismiss();
-      alert(JSON.parse(err._body).message);
+      this.dialogs.alert(JSON.parse(err._body).message, 'Login', 'OK')
+      .then(() => console.log('Dialog dismissed'))
+      .catch(e => console.log('Error displaying dialog', e));
     });
 
   }

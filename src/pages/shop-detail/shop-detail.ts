@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ModalController, AlertController, 
 import { ShopModel, ShopService } from '@ngcommerce/core';
 import { CreateshopPage } from '../createshop/createshop';
 import { LoadingProvider } from '../../providers/loading/loading';
+import { Dialogs } from '@ionic-native/dialogs';
 
 /**
  * Generated class for the ShopDetailPage page.
@@ -24,7 +25,9 @@ export class ShopDetailPage {
     public shopService: ShopService,
     public modalCtrl: ModalController,
     public loadingCtrl: LoadingProvider,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public dialogs: Dialogs
+    
   ) {
   }
 
@@ -76,7 +79,9 @@ export class ShopDetailPage {
       this.navCtrl.pop();
       this.loadingCtrl.dismiss();
     }, (err) => {
-      alert(JSON.parse(err._body).message);
+      this.dialogs.alert(JSON.parse(err._body).message, 'Shop Detail', 'OK')
+      .then(() => console.log('Dialog dismissed'))
+      .catch(e => console.log('Error displaying dialog', e));
       this.loadingCtrl.dismiss();
     });
   }
@@ -96,12 +101,16 @@ export class ShopDetailPage {
           }).catch(e => {
             this.loadingCtrl.dismiss();
             // this.loadingCtrl.dismiss();
-            alert(e);
+            this.dialogs.alert(e, 'Shop Detail', 'OK')
+            .then(() => console.log('Dialog dismissed'))
+            .catch(e => console.log('Error displaying dialog', e));
           })
           // this.navCtrl.pop();
         }, (err) => {
           this.loadingCtrl.dismiss();
-          alert(JSON.parse(err._body).message);
+          this.dialogs.alert(JSON.parse(err._body).message, 'Shop Detail', 'OK')
+          .then(() => console.log('Dialog dismissed'))
+          .catch(e => console.log('Error displaying dialog', e));
         });
       }
     });

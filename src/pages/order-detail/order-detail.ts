@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { OrderService } from "@ngcommerce/core";
 import { LoadingProvider } from '../../providers/loading/loading';
+import { Dialogs } from '@ionic-native/dialogs';
 
 /**
  * Generated class for the OrderDetailPage page.
@@ -23,7 +24,9 @@ export class OrderDetailPage {
     public orderService: OrderService,
     public alertCtrl: AlertController,
     // public loadingCtrl: LoadingController
-    public loadingCtrl: LoadingProvider
+    public loadingCtrl: LoadingProvider,
+    public dialogs: Dialogs
+    
   ) {
     this.loadingCtrl.onLoading();
     this.items = this.navParams.data;
@@ -61,7 +64,9 @@ export class OrderDetailPage {
               this.navCtrl.pop();
             }, (err) => {
               this.loadingCtrl.dismissAll();
-              alert(JSON.parse(err._body).message);
+              this.dialogs.alert(JSON.parse(err._body).message, 'Order Detail', 'OK')
+              .then(() => console.log('Dialog dismissed'))
+              .catch(e => console.log('Error displaying dialog', e));
             });
           }
         }
@@ -78,7 +83,9 @@ export class OrderDetailPage {
         this.navCtrl.pop();
       }, (err) => {
         this.loadingCtrl.dismissAll();
-        alert(JSON.parse(err._body).message);
+        this.dialogs.alert(JSON.parse(err._body).message, 'Order Detail', 'OK')
+        .then(() => console.log('Dialog dismissed'))
+        .catch(e => console.log('Error displaying dialog', e));
       });
     } else if (item.status == "accept") {
       this.loadingCtrl.dismissAll();
@@ -91,7 +98,9 @@ export class OrderDetailPage {
         this.navCtrl.pop();
       }, (err) => {
         this.loadingCtrl.dismissAll();
-        alert(JSON.parse(err._body).message);
+        this.dialogs.alert(JSON.parse(err._body).message, 'Order Detail', 'OK')
+        .then(() => console.log('Dialog dismissed'))
+        .catch(e => console.log('Error displaying dialog', e));
       })
     } else if (item.status == "return") {
 
@@ -106,7 +115,9 @@ export class OrderDetailPage {
       this.navCtrl.pop();
     }, (err) => {
       this.loadingCtrl.dismissAll();
-      alert(JSON.parse(err._body).message);
+      this.dialogs.alert(JSON.parse(err._body).message, 'Order Detail', 'OK')
+      .then(() => console.log('Dialog dismissed'))
+      .catch(e => console.log('Error displaying dialog', e));
     })
 
   }

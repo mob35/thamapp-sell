@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 import { AuthenService } from "@ngcommerce/core";
 import { LoadingProvider } from '../../providers/loading/loading';
 import { TabsPage } from '../tabs/tabs';
+import { Dialogs } from '@ionic-native/dialogs';
 
 /**
  * Generated class for the RegisterPage page.
@@ -24,6 +25,8 @@ export class RegisterPage {
     public service: AuthenService,
     public loadingCtrl: LoadingProvider,
     public app: App,
+    public dialogs: Dialogs
+
   ) {
     if (this.navParams.data && this.navParams.data !== undefined) {
       this.user.tel = this.navParams.data;
@@ -42,14 +45,16 @@ export class RegisterPage {
     // alert(JSON.stringify(newUser));
     this.loadingCtrl.onLoading();
     this.service.signUp(newUser).then(data => {
-      window.localStorage.setItem('token',data.loginToken);
+      window.localStorage.setItem('token', data.loginToken);
       window.localStorage.setItem('thamappseller', JSON.stringify(data));
       // alert(JSON.stringify(data));
       this.loadingCtrl.dismiss();
       this.app.getRootNav().setRoot(TabsPage);
     }).catch(e => {
       this.loadingCtrl.dismiss();
-      alert("<pre>" + JSON.stringify(e));
+      this.dialogs.alert("<pre>" + JSON.stringify(e), 'Register', 'OK')
+        .then(() => console.log('Dialog dismissed'))
+        .catch(e => console.log('Error displaying dialog', e));
     });
   }
 

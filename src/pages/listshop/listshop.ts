@@ -4,6 +4,7 @@ import { ShopListModel, ShopService } from '@ngcommerce/core';
 import { CreateshopPage } from '../createshop/createshop';
 import { ShopDetailPage } from '../shop-detail/shop-detail';
 import { LoadingProvider } from '../../providers/loading/loading';
+import { Dialogs } from '@ionic-native/dialogs';
 
 /**
  * Generated class for the ListshopPage page.
@@ -24,7 +25,8 @@ export class ListshopPage {
     public navParams: NavParams,
     public shopService: ShopService,
     public modalControl: ModalController,
-    public loadingCtrl: LoadingProvider
+    public loadingCtrl: LoadingProvider,
+    public dialogs: Dialogs
   ) {
   }
 
@@ -53,7 +55,9 @@ export class ListshopPage {
             this.getShop();
           }, (err) => {
             this.loadingCtrl.dismiss();
-            alert(JSON.parse(err._body).message);
+            this.dialogs.alert(JSON.parse(err._body).message, 'List shop', 'OK')
+            .then(() => console.log('Dialog dismissed'))
+            .catch(e => console.log('Error displaying dialog', e));
           });
       }
 

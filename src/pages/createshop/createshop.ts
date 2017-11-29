@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { ShopModel } from '@ngcommerce/core';
+import { Dialogs } from '@ionic-native/dialogs';
 
 /**
  * Generated class for the CreateshopPage page.
@@ -21,7 +22,8 @@ export class CreateshopPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public viewCtrl: ViewController
+    public viewCtrl: ViewController,
+    public dialogs: Dialogs
   ) {
     if (this.navParams.data) {
       this.item = JSON.parse(JSON.stringify(this.navParams.data));
@@ -43,7 +45,9 @@ export class CreateshopPage {
   }
   createShop(data) {
     if (!data.name) {
-      alert('Please Enter Your Name!');
+      this.dialogs.alert('Please Enter Your Name!', 'Create Shop', 'OK')
+      .then(() => console.log('Dialog dismissed'))
+      .catch(e => console.log('Error displaying dialog', e));
       return;
     } else if (!data.image && this.pImages.length === 0) {
       this.resImg = './assets/image/noimage.png';

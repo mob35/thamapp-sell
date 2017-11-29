@@ -8,6 +8,7 @@ import { NotificationPage } from './../notification/notification';
 import { ShopService } from '@ngcommerce/core';
 import { ModalController, LoadingController } from 'ionic-angular';
 import { CreateshopPage } from '../createshop/createshop';
+import { Dialogs } from '@ionic-native/dialogs';
 
 @Component({
   selector: 'page-tabs',
@@ -24,7 +25,9 @@ export class TabsPage {
   constructor(
     public shopService: ShopService,
     public modalControl: ModalController,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    public dialogs: Dialogs
+    
   ) {
 
   }
@@ -57,7 +60,9 @@ export class TabsPage {
             // loading.dismiss();
           }, (err) => {
             // loading.dismiss();
-            alert(JSON.parse(err._body).message);
+            this.dialogs.alert(JSON.parse(err._body).message, 'Shop Detail', 'OK')
+            .then(() => console.log('Dialog dismissed'))
+            .catch(e => console.log('Error displaying dialog', e));
           });
       }
 

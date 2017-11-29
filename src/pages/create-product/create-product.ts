@@ -85,7 +85,9 @@ export class CreateProductPage {
       this.loadCate();
     }, (err) => {
       this.loadingCtrl.dismiss();
-      alert(JSON.parse(err._body).message);
+      this.dialogs.alert(JSON.parse(err._body).message, 'Create Product', 'OK')
+      .then(() => console.log('Dialog dismissed'))
+      .catch(e => console.log('Error displaying dialog', e));
     });
   }
 
@@ -97,7 +99,9 @@ export class CreateProductPage {
       this.loadShipping();
     }, (err) => {
       this.loadingCtrl.dismiss();
-      alert(JSON.parse(err._body).message);
+      this.dialogs.alert(JSON.parse(err._body).message, 'Create Product', 'OK')
+      .then(() => console.log('Dialog dismissed'))
+      .catch(e => console.log('Error displaying dialog', e));
     });
   }
 
@@ -131,7 +135,9 @@ export class CreateProductPage {
       this.loadCurrency();
     }, (err) => {
       this.loadingCtrl.dismiss();
-      alert(JSON.parse(err._body).message);
+      this.dialogs.alert(JSON.parse(err._body).message, 'Create Product', 'OK')
+      .then(() => console.log('Dialog dismissed'))
+      .catch(e => console.log('Error displaying dialog', e));
     });
   }
 
@@ -143,7 +149,9 @@ export class CreateProductPage {
       this.loadingCtrl.dismiss();
     }, (err) => {
       this.loadingCtrl.dismiss();
-      alert(JSON.parse(err._body).message);
+      this.dialogs.alert(JSON.parse(err._body).message, 'Create Product', 'OK')
+      .then(() => console.log('Dialog dismissed'))
+      .catch(e => console.log('Error displaying dialog', e));
     });
   }
 
@@ -187,7 +195,9 @@ export class CreateProductPage {
 
           // this.item.percentofdiscount = parseFloat((100 - per).toFixed(2));
         } else {
-          alert('ส่วนลดมากกว่าราคาขายจริง');
+          this.dialogs.alert('ส่วนลดมากกว่าราคาขายจริง!', 'Create Product', 'OK')
+          .then(() => console.log('Dialog dismissed'))
+          .catch(e => console.log('Error displaying dialog', e));
           this.e.percentofdiscount = null;
           this.e.promotionprice = null;
         }
@@ -217,7 +227,9 @@ export class CreateProductPage {
           }
           // this.e.promotionprice = parseFloat((this.e.price - pro).toFixed(2));
         } else {
-          alert('มากกว่า 100 เปอร์เซ็นต์');
+          this.dialogs.alert('มากกว่า 100 เปอร์เซ็นต์!', 'Create Product', 'OK')
+          .then(() => console.log('Dialog dismissed'))
+          .catch(e => console.log('Error displaying dialog', e));
           this.e.promotionprice = null;
           this.e.percentofdiscount = null;
         }

@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, ModalController, LoadingController } from 'ionic-angular';
 import { CorService, ProductModel, ProductService } from "@ngcommerce/core";
 import { LoadingProvider } from '../../providers/loading/loading';
+import { Dialogs } from '@ionic-native/dialogs';
 
 /**
  * Generated class for the ProductDetailPage page.
@@ -26,7 +27,9 @@ export class ProductDetailPage {
     public loadingCtrl: LoadingProvider,
     // public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    public dialogs: Dialogs
+    
   ) {
 
     this.loadingCtrl.onLoading();
@@ -36,7 +39,9 @@ export class ProductDetailPage {
       this.loadingCtrl.dismiss();
     }).catch(e => {
       this.loadingCtrl.dismiss();
-      alert(e);
+      this.dialogs.alert(e, 'Product Detail', 'OK')
+      .then(() => console.log('Dialog dismissed'))
+      .catch(e => console.log('Error displaying dialog', e));
     });
   }
 
@@ -53,7 +58,9 @@ export class ProductDetailPage {
       this.navCtrl.pop();
       this.loadingCtrl.dismiss();
     }, (err) => {
-      alert(JSON.parse(err._body).message);
+      this.dialogs.alert(JSON.parse(err._body).message, 'Product Detail', 'OK')
+      .then(() => console.log('Dialog dismissed'))
+      .catch(e => console.log('Error displaying dialog', e));
       this.loadingCtrl.dismiss();
     });
   }
@@ -115,12 +122,16 @@ export class ProductDetailPage {
             this.loadingCtrl.dismiss();
           }).catch(e => {
             this.loadingCtrl.dismiss();
-            alert(e);
+            this.dialogs.alert(e, 'Product Detail', 'OK')
+            .then(() => console.log('Dialog dismissed'))
+            .catch(e => console.log('Error displaying dialog', e));
           })
           // this.navCtrl.pop();
         }, (err) => {
+          this.dialogs.alert(JSON.parse(err._body).message, 'Product Detail', 'OK')
+          .then(() => console.log('Dialog dismissed'))
+          .catch(e => console.log('Error displaying dialog', e));
           this.loadingCtrl.dismiss();
-          alert(JSON.parse(err._body).message);
         });
       }
     });
