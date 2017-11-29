@@ -21,7 +21,7 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content class="{{!shop ? 'backgroundImg' : ''}}">
   <div *ngIf="shop">
     <ion-refresher (ionRefresh)="doRefresh($event)">
         <!-- <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">             -->
