@@ -1,6 +1,10 @@
 <!-- Generated template for the IonUploadImageComponent component -->
 <div *ngIf="images.length === 0" class="min-height">
     <!-- <img (click)="onUpload()" src="./assets/image/uploadImg.png"> -->
+    <p class="paddingText" *ngIf="isImgProduct">อัพโหลดรูปภาพสินค้า:</p>
+    <p class="paddingText" *ngIf="isImgShop">อัพโหลดรูปภาพร้านค้า:</p>
+    <p class="paddingText" *ngIf="isImgProfile">อัพโหลดรูปภาพโปรไฟล์:</p>
+
     <img *ngIf="isImgProduct" (click)="onUpload()" src="./assets/image/Upload Product.png">
     <img *ngIf="isImgProfile" (click)="onUpload()" src="./assets/image/Upload-Photo.png">
     <img *ngIf="isImgShop" (click)="onUpload()" src="./assets/image/Upload-Shop.png">
