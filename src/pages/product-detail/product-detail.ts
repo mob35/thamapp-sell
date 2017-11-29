@@ -39,9 +39,7 @@ export class ProductDetailPage {
       this.loadingCtrl.dismiss();
     }).catch(e => {
       this.loadingCtrl.dismiss();
-      this.dialogs.alert(e, 'Product Detail', 'OK')
-      .then(() => console.log('Dialog dismissed'))
-      .catch(e => console.log('Error displaying dialog', e));
+      this.dialogs.alert(e, 'Product Detail', 'OK');
     });
   }
 
@@ -58,9 +56,12 @@ export class ProductDetailPage {
       this.navCtrl.pop();
       this.loadingCtrl.dismiss();
     }, (err) => {
-      this.dialogs.alert(JSON.parse(err._body).message, 'Product Detail', 'OK')
-      .then(() => console.log('Dialog dismissed'))
-      .catch(e => console.log('Error displaying dialog', e));
+      if (JSON.parse(err._body).message) {
+      this.dialogs.alert(JSON.parse(err._body).message, 'Product Detail', 'OK');
+      
+      } else {
+        console.log(err);
+      }
       this.loadingCtrl.dismiss();
     });
   }
@@ -122,15 +123,15 @@ export class ProductDetailPage {
             this.loadingCtrl.dismiss();
           }).catch(e => {
             this.loadingCtrl.dismiss();
-            this.dialogs.alert(e, 'Product Detail', 'OK')
-            .then(() => console.log('Dialog dismissed'))
-            .catch(e => console.log('Error displaying dialog', e));
+            this.dialogs.alert(e, 'Product Detail', 'OK');
           })
           // this.navCtrl.pop();
         }, (err) => {
-          this.dialogs.alert(JSON.parse(err._body).message, 'Product Detail', 'OK')
-          .then(() => console.log('Dialog dismissed'))
-          .catch(e => console.log('Error displaying dialog', e));
+          if (JSON.parse(err._body).message) {
+          this.dialogs.alert(JSON.parse(err._body).message, 'Product Detail', 'OK');
+          } else {
+            console.log(err);
+          }
           this.loadingCtrl.dismiss();
         });
       }

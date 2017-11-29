@@ -59,9 +59,11 @@ export class LoginPage {
           this.app.getRootNav().setRoot(TabsPage);
         }, (error) => {
           this.loadingCtrl.dismiss();
-          this.dialogs.alert(JSON.parse(error._body).message, 'Login', 'OK')
-          .then(() => console.log('Dialog dismissed'))
-          .catch(e => console.log('Error displaying dialog', e));
+          if (JSON.parse(error._body).message) {
+            this.dialogs.alert(JSON.parse(error._body).message, 'Login', 'OK');
+          } else {
+            console.log(error);
+          }
           // this.loadingCtrl.dismiss();
         });
       } else {
@@ -70,9 +72,11 @@ export class LoginPage {
       }
     }, (err) => {
       this.loadingCtrl.dismiss();
-      this.dialogs.alert(JSON.parse(err._body).message, 'Login', 'OK')
-      .then(() => console.log('Dialog dismissed'))
-      .catch(e => console.log('Error displaying dialog', e));
+      if (JSON.parse(err._body).message) {
+        this.dialogs.alert(JSON.parse(err._body).message, 'Login', 'OK');
+      } else {
+        console.log(err);
+      }
     });
 
   }
@@ -103,7 +107,7 @@ export class LoginPage {
   // }
 
   register(data) {
-    this.navCtrl.push(RegisterPage,data);
+    this.navCtrl.push(RegisterPage, data);
   }
 
 }

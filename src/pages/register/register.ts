@@ -52,9 +52,11 @@ export class RegisterPage {
       this.app.getRootNav().setRoot(TabsPage);
     }).catch(e => {
       this.loadingCtrl.dismiss();
-      this.dialogs.alert("<pre>" + JSON.stringify(e), 'Register', 'OK')
-        .then(() => console.log('Dialog dismissed'))
-        .catch(e => console.log('Error displaying dialog', e));
+      if (JSON.parse(e._body).message) {
+        this.dialogs.alert(JSON.parse(e._body).message, 'Register', 'OK');
+      } else {
+        console.log(e);
+      }
     });
   }
 

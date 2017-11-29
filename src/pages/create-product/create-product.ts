@@ -85,9 +85,11 @@ export class CreateProductPage {
       this.loadCate();
     }, (err) => {
       this.loadingCtrl.dismiss();
-      this.dialogs.alert(JSON.parse(err._body).message, 'Create Product', 'OK')
-      .then(() => console.log('Dialog dismissed'))
-      .catch(e => console.log('Error displaying dialog', e));
+      if (JSON.parse(err._body).message) {
+        this.dialogs.alert(JSON.parse(err._body).message, 'Create Product', 'OK');
+      } else {
+        console.log(err);
+      }
     });
   }
 
@@ -99,9 +101,11 @@ export class CreateProductPage {
       this.loadShipping();
     }, (err) => {
       this.loadingCtrl.dismiss();
-      this.dialogs.alert(JSON.parse(err._body).message, 'Create Product', 'OK')
-      .then(() => console.log('Dialog dismissed'))
-      .catch(e => console.log('Error displaying dialog', e));
+      if (JSON.parse(err._body).message) {
+        this.dialogs.alert(JSON.parse(err._body).message, 'Create Product', 'OK');
+      } else {
+        console.log(err);
+      }
     });
   }
 
@@ -135,9 +139,11 @@ export class CreateProductPage {
       this.loadCurrency();
     }, (err) => {
       this.loadingCtrl.dismiss();
-      this.dialogs.alert(JSON.parse(err._body).message, 'Create Product', 'OK')
-      .then(() => console.log('Dialog dismissed'))
-      .catch(e => console.log('Error displaying dialog', e));
+      if (JSON.parse(err._body).message) {
+        this.dialogs.alert(JSON.parse(err._body).message, 'Create Product', 'OK');
+      } else {
+        console.log(err);
+      }
     });
   }
 
@@ -149,9 +155,11 @@ export class CreateProductPage {
       this.loadingCtrl.dismiss();
     }, (err) => {
       this.loadingCtrl.dismiss();
-      this.dialogs.alert(JSON.parse(err._body).message, 'Create Product', 'OK')
-      .then(() => console.log('Dialog dismissed'))
-      .catch(e => console.log('Error displaying dialog', e));
+      if (JSON.parse(err._body).message) {
+        this.dialogs.alert(JSON.parse(err._body).message, 'Create Product', 'OK');
+      } else {
+        console.log(err);
+      }
     });
   }
 
@@ -195,9 +203,7 @@ export class CreateProductPage {
 
           // this.item.percentofdiscount = parseFloat((100 - per).toFixed(2));
         } else {
-          this.dialogs.alert('ส่วนลดมากกว่าราคาขายจริง!', 'Create Product', 'OK')
-          .then(() => console.log('Dialog dismissed'))
-          .catch(e => console.log('Error displaying dialog', e));
+          this.dialogs.alert('ส่วนลดมากกว่าราคาขายจริง!', 'Create Product', 'OK');
           this.e.percentofdiscount = null;
           this.e.promotionprice = null;
         }
@@ -227,9 +233,7 @@ export class CreateProductPage {
           }
           // this.e.promotionprice = parseFloat((this.e.price - pro).toFixed(2));
         } else {
-          this.dialogs.alert('มากกว่า 100 เปอร์เซ็นต์!', 'Create Product', 'OK')
-          .then(() => console.log('Dialog dismissed'))
-          .catch(e => console.log('Error displaying dialog', e));
+          this.dialogs.alert('มากกว่า 100 เปอร์เซ็นต์!', 'Create Product', 'OK');
           this.e.promotionprice = null;
           this.e.percentofdiscount = null;
         }
@@ -323,44 +327,28 @@ export class CreateProductPage {
     });
     // e.shippings.shippingtype = this.shippingtype;
     if (!el.name) {
-      this.dialogs.alert('Please Enter Your Name!', 'Create Product', 'OK')
-      .then(() => console.log('Dialog dismissed'))
-      .catch(e => console.log('Error displaying dialog', e));
+      this.dialogs.alert('Please Enter Your Name!', 'Create Product', 'OK');
       return;
     } else if (!el.detail) {
-      this.dialogs.alert('Please Enter Your Detail!', 'Create Product', 'OK')
-      .then(() => console.log('Dialog dismissed'))
-      .catch(e => console.log('Error displaying dialog', e));
+      this.dialogs.alert('Please Enter Your Detail!', 'Create Product', 'OK');
       return;
     } else if (!el.price) {
-      this.dialogs.alert('Please Enter Your Price!', 'Create Product', 'OK')
-      .then(() => console.log('Dialog dismissed'))
-      .catch(e => console.log('Error displaying dialog', e));
+      this.dialogs.alert('Please Enter Your Price!', 'Create Product', 'OK');
       return;
     } else if (!el.currency) {
-      this.dialogs.alert('Please Enter Your Currency!', 'Create Product', 'OK')
-      .then(() => console.log('Dialog dismissed'))
-      .catch(e => console.log('Error displaying dialog', e));
+      this.dialogs.alert('Please Enter Your Currency!', 'Create Product', 'OK');
       return;
     } else if (el.shippings.length === 0) {
-      this.dialogs.alert('Please Enter Your Shippings!', 'Create Product', 'OK')
-      .then(() => console.log('Dialog dismissed'))
-      .catch(e => console.log('Error displaying dialog', e));
+      this.dialogs.alert('Please Enter Your Shippings!', 'Create Product', 'OK');
       return;
     } else if (!el.categories) {
-      this.dialogs.alert('Please Enter Your Categories!', 'Create Product', 'OK')
-      .then(() => console.log('Dialog dismissed'))
-      .catch(e => console.log('Error displaying dialog', e));
+      this.dialogs.alert('Please Enter Your Categories!', 'Create Product', 'OK');
       return;
     } else if (!el.shop) {
-      this.dialogs.alert('Please Enter Your Shop!', 'Create Product', 'OK')
-      .then(() => console.log('Dialog dismissed'))
-      .catch(e => console.log('Error displaying dialog', e));
+      this.dialogs.alert('Please Enter Your Shop!', 'Create Product', 'OK');
       return;
     } else if (this.pImages.length === 0) {
-      this.dialogs.alert('Please Enter Your Upload Image!', 'Create Product', 'OK')
-      .then(() => console.log('Dialog dismissed'))
-      .catch(e => console.log('Error displaying dialog', e));
+      this.dialogs.alert('Please Enter Your Upload Image!', 'Create Product', 'OK');
       return;
     }
     if (this.pImages.length > 0) {

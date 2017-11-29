@@ -45,9 +45,7 @@ export class CreateshopPage {
   }
   createShop(data) {
     if (!data.name) {
-      this.dialogs.alert('Please Enter Your Name!', 'Create Shop', 'OK')
-      .then(() => console.log('Dialog dismissed'))
-      .catch(e => console.log('Error displaying dialog', e));
+      this.dialogs.alert('Please Enter Your Name!', 'Create Shop', 'OK');
       return;
     } else if (!data.image && this.pImages.length === 0) {
       this.resImg = './assets/image/noimage.png';

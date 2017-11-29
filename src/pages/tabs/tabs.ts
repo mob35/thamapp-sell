@@ -27,7 +27,7 @@ export class TabsPage {
     public modalControl: ModalController,
     public loadingCtrl: LoadingController,
     public dialogs: Dialogs
-    
+
   ) {
 
   }
@@ -60,9 +60,11 @@ export class TabsPage {
             // loading.dismiss();
           }, (err) => {
             // loading.dismiss();
-            this.dialogs.alert(JSON.parse(err._body).message, 'Shop Detail', 'OK')
-            .then(() => console.log('Dialog dismissed'))
-            .catch(e => console.log('Error displaying dialog', e));
+            if (JSON.parse(err._body).message) {
+              this.dialogs.alert(JSON.parse(err._body).message, 'Tab', 'OK');
+            } else {
+              console.log(err);
+            }
           });
       }
 

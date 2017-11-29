@@ -26,7 +26,7 @@ export class OrderDetailPage {
     // public loadingCtrl: LoadingController
     public loadingCtrl: LoadingProvider,
     public dialogs: Dialogs
-    
+
   ) {
     this.loadingCtrl.onLoading();
     this.items = this.navParams.data;
@@ -64,9 +64,11 @@ export class OrderDetailPage {
               this.navCtrl.pop();
             }, (err) => {
               this.loadingCtrl.dismissAll();
-              this.dialogs.alert(JSON.parse(err._body).message, 'Order Detail', 'OK')
-              .then(() => console.log('Dialog dismissed'))
-              .catch(e => console.log('Error displaying dialog', e));
+              if (JSON.parse(err._body).message) {
+                this.dialogs.alert(JSON.parse(err._body).message, 'Order Detail', 'OK');
+              } else {
+                console.log(err);
+              }
             });
           }
         }
@@ -83,9 +85,11 @@ export class OrderDetailPage {
         this.navCtrl.pop();
       }, (err) => {
         this.loadingCtrl.dismissAll();
-        this.dialogs.alert(JSON.parse(err._body).message, 'Order Detail', 'OK')
-        .then(() => console.log('Dialog dismissed'))
-        .catch(e => console.log('Error displaying dialog', e));
+        if (JSON.parse(err._body).message) {
+          this.dialogs.alert(JSON.parse(err._body).message, 'Order Detail', 'OK');
+        } else {
+          console.log(err);
+        }
       });
     } else if (item.status == "accept") {
       this.loadingCtrl.dismissAll();
@@ -98,9 +102,11 @@ export class OrderDetailPage {
         this.navCtrl.pop();
       }, (err) => {
         this.loadingCtrl.dismissAll();
-        this.dialogs.alert(JSON.parse(err._body).message, 'Order Detail', 'OK')
-        .then(() => console.log('Dialog dismissed'))
-        .catch(e => console.log('Error displaying dialog', e));
+        if (JSON.parse(err._body).message) {
+          this.dialogs.alert(JSON.parse(err._body).message, 'Order Detail', 'OK');
+        } else {
+          console.log(err);
+        }
       })
     } else if (item.status == "return") {
 
@@ -115,9 +121,11 @@ export class OrderDetailPage {
       this.navCtrl.pop();
     }, (err) => {
       this.loadingCtrl.dismissAll();
-      this.dialogs.alert(JSON.parse(err._body).message, 'Order Detail', 'OK')
-      .then(() => console.log('Dialog dismissed'))
-      .catch(e => console.log('Error displaying dialog', e));
+      if (JSON.parse(err._body).message) {
+        this.dialogs.alert(JSON.parse(err._body).message, 'Order Detail', 'OK');
+      } else {
+        console.log(err);
+      }
     })
 
   }

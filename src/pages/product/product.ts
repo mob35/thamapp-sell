@@ -38,7 +38,7 @@ export class ProductPage {
     public app: App,
     public events: Events,
     public dialogs: Dialogs
-    
+
   ) {
     events.subscribe('notification:received', () => {
       this.shop = JSON.parse(window.localStorage.getItem('shop'));
@@ -93,9 +93,11 @@ export class ProductPage {
           this.getProduct(this.shop);
         }, (err) => {
           this.loadingCtrl.dismiss();
-          this.dialogs.alert(JSON.parse(err._body).message, 'Product', 'OK')
-          .then(() => console.log('Dialog dismissed'))
-          .catch(e => console.log('Error displaying dialog', e));
+          if (JSON.parse(err._body).message) {
+            this.dialogs.alert(JSON.parse(err._body).message, 'Product', 'OK');
+          } else {
+            console.log(err);
+          }
         });
       }
     });

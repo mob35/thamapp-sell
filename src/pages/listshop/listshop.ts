@@ -55,9 +55,11 @@ export class ListshopPage {
             this.getShop();
           }, (err) => {
             this.loadingCtrl.dismiss();
-            this.dialogs.alert(JSON.parse(err._body).message, 'List shop', 'OK')
-            .then(() => console.log('Dialog dismissed'))
-            .catch(e => console.log('Error displaying dialog', e));
+            if (JSON.parse(err._body).message) {
+              this.dialogs.alert(JSON.parse(err._body).message, 'List shop', 'OK');
+            } else {
+              console.log(err);
+            }
           });
       }
 
