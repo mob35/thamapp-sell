@@ -27,7 +27,7 @@
       </ion-col>
     </ion-row>
   </ion-grid> -->
-  <ion-upload-images [maximumImagesCount]="1" [images]="pImages" [isShowUpload]="false" (resImage)="resImageEvent($event)"></ion-upload-images>
+  <ion-upload-images [maximumImagesCount]="1" [images]="pImages" [isShowUpload]="false" [isImgProfile]="true" (resImage)="resImageEvent($event)"></ion-upload-images>
   <ion-item>
     <ion-label stacked>Name</ion-label>
     <ion-input type="text" value="{{editProfile.firstName}}" [(ngModel)]="editProfile.firstName"></ion-input>

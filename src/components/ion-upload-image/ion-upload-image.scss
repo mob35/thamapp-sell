@@ -1,6 +1,16 @@
 ion-upload-image {
 
 }
+.min-height{
+    height: 300px !important;
+}
+.image-height{
+    height: 300px !important;
+    object-fit: cover !important;
+    display:flex;
+    align-items: center; /* Vertical center alignment */
+    justify-content: center; /* Horizontal center alignment */
+}
 .loading-upload {
     .loading-wrapper {
         box-shadow: none !important;

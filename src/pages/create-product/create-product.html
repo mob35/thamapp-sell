@@ -20,7 +20,7 @@
 
 <ion-content>
   <div *ngIf="showForm">
-    <ion-upload-images [maximumImagesCount]="3" [images]="pImages" [isShowUpload]="true" (resImage)="resImageEvent($event)"></ion-upload-images>
+    <ion-upload-images [maximumImagesCount]="3" [images]="pImages" [isShowUpload]="true" [isImgProduct]="true" (resImage)="resImageEvent($event)"></ion-upload-images>
     <ion-grid id="gridDetail">
       <ion-row>
         <ion-col id="colProduct">
