@@ -35,6 +35,10 @@ export class MyApp {
         this.onSignalSetup();
       }
     });
+    this.user = JSON.parse(window.localStorage.getItem('thamappseller'));
+    if (this.user) {
+      this.rootPage = TabsPage;
+    }
     this.workaroundSideMenu();
     this.configFirebase();
   }
