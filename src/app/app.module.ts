@@ -17,6 +17,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from './../pages/login/login';
 import { RegisterPage } from './../pages/register/register';
 import { OneSignal } from '@ionic-native/onesignal';
+import { Dialogs } from '@ionic-native/dialogs';
 
 import { EcommerceCoreModule, IonSegmentOrderComponent, IonListOrderComponent, IonOrdersComponent, IonDetailOrderComponent, IonFormProfileComponent, IonListProductComponent, IonFormProductComponent, IonListShopComponent, IonFormShopComponent, IonUploadImageComponent, IonDetailShopComponent } from "@ngcommerce/core";
 
@@ -105,6 +106,7 @@ import { ThamappAuthenProvider } from '../providers/thamapp-authen/thamapp-authe
     StatusBar,
     SplashScreen,
     OneSignal,
+    Dialogs,
     ImagePicker,
     Base64,
     { provide: ErrorHandler, useClass: IonicErrorHandler },

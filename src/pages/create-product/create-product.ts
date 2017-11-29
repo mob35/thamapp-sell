@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
+import { Dialogs } from '@ionic-native/dialogs';
 
 import {
   CategoryModel,
@@ -47,7 +48,8 @@ export class CreateProductPage {
     public currencyService: CurrencyService,
     public loadingCtrl: LoadingProvider,
     // public loadingCtrl: LoadingController,
-    public viewCtrl: ViewController
+    public viewCtrl: ViewController,
+    public dialogs: Dialogs
   ) {
     let shopselec = JSON.parse(window.localStorage.getItem('shop'));
     this.shops = [shopselec];
@@ -309,28 +311,44 @@ export class CreateProductPage {
     });
     // e.shippings.shippingtype = this.shippingtype;
     if (!el.name) {
-      alert('Please Enter Your Name!');
+      this.dialogs.alert('Please Enter Your Name!', 'Create Product', 'OK')
+      .then(() => console.log('Dialog dismissed'))
+      .catch(e => console.log('Error displaying dialog', e));
       return;
     } else if (!el.detail) {
-      alert('Please Enter Your Detail!');
+      this.dialogs.alert('Please Enter Your Detail!', 'Create Product', 'OK')
+      .then(() => console.log('Dialog dismissed'))
+      .catch(e => console.log('Error displaying dialog', e));
       return;
     } else if (!el.price) {
-      alert('Please Enter Your Price!');
+      this.dialogs.alert('Please Enter Your Price!', 'Create Product', 'OK')
+      .then(() => console.log('Dialog dismissed'))
+      .catch(e => console.log('Error displaying dialog', e));
       return;
     } else if (!el.currency) {
-      alert('Please Enter Your Currency!');
+      this.dialogs.alert('Please Enter Your Currency!', 'Create Product', 'OK')
+      .then(() => console.log('Dialog dismissed'))
+      .catch(e => console.log('Error displaying dialog', e));
       return;
-    } else if (!el.shippings) {
-      alert('Please Enter Your Shippings!');
+    } else if (el.shippings.length === 0) {
+      this.dialogs.alert('Please Enter Your Shippings!', 'Create Product', 'OK')
+      .then(() => console.log('Dialog dismissed'))
+      .catch(e => console.log('Error displaying dialog', e));
       return;
     } else if (!el.categories) {
-      alert('Please Enter Your Categories!');
+      this.dialogs.alert('Please Enter Your Categories!', 'Create Product', 'OK')
+      .then(() => console.log('Dialog dismissed'))
+      .catch(e => console.log('Error displaying dialog', e));
       return;
     } else if (!el.shop) {
-      alert('Please Enter Your Shop!');
+      this.dialogs.alert('Please Enter Your Shop!', 'Create Product', 'OK')
+      .then(() => console.log('Dialog dismissed'))
+      .catch(e => console.log('Error displaying dialog', e));
       return;
     } else if (this.pImages.length === 0) {
-      alert('Please Enter Your Upload Image!');
+      this.dialogs.alert('Please Enter Your Upload Image!', 'Create Product', 'OK')
+      .then(() => console.log('Dialog dismissed'))
+      .catch(e => console.log('Error displaying dialog', e));
       return;
     }
     if (this.pImages.length > 0) {
