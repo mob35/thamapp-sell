@@ -88,6 +88,7 @@ export class OrderPage {
       this.flag = true;
       this.loadingCtrl.dismissAll();
     }, (err) => {
+      window.localStorage.removeItem('shop');      
       this.flag = true;
       this.loadingCtrl.dismissAll();
       // alert(JSON.parse(err._body).message);

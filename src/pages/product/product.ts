@@ -73,6 +73,7 @@ export class ProductPage {
       console.log(data);
       this.product = data;
     }).catch(e => {
+      window.localStorage.removeItem('shop');      
       this.flag = true;
       this.loadingCtrl.dismiss();
       // alert(e);
