@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App, Platform } from 'ionic-angular';
 import { AuthenService } from "@ngcommerce/core";
 import { LoadingProvider } from '../../providers/loading/loading';
 import { TabsPage } from '../tabs/tabs';
 import { Dialogs } from '@ionic-native/dialogs';
+import { OneSignal } from '@ionic-native/onesignal';
 
 /**
  * Generated class for the RegisterPage page.
@@ -25,7 +26,9 @@ export class RegisterPage {
     public service: AuthenService,
     public loadingCtrl: LoadingProvider,
     public app: App,
-    public dialogs: Dialogs
+    public dialogs: Dialogs,
+    public platform: Platform,    
+    public oneSignal: OneSignal    
 
   ) {
     if (this.navParams.data && this.navParams.data !== undefined) {
@@ -48,6 +51,11 @@ export class RegisterPage {
       window.localStorage.setItem('token', data.loginToken);
       window.localStorage.setItem('thamappseller', JSON.stringify(data));
       // alert(JSON.stringify(data));
+      if (this.platform.is('cordova')) {
+        this.oneSignal.getIds().then((oneSignal) => {
+          this.service.pushNotificationUser({ id: oneSignal.userId });
+        });
+      }
       this.loadingCtrl.dismiss();
       this.app.getRootNav().setRoot(TabsPage);
     }).catch(e => {

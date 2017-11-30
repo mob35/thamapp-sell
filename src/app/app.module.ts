@@ -19,7 +19,7 @@ import { RegisterPage } from './../pages/register/register';
 import { OneSignal } from '@ionic-native/onesignal';
 import { Dialogs } from '@ionic-native/dialogs';
 
-import { EcommerceCoreModule, IonSegmentOrderComponent, IonListOrderComponent, IonOrdersComponent, IonDetailOrderComponent, IonFormProfileComponent, IonListProductComponent, IonFormProductComponent, IonListShopComponent, IonFormShopComponent, IonUploadImageComponent, IonDetailShopComponent } from "@ngcommerce/core";
+import { EcommerceCoreModule, IonSegmentOrderComponent, IonListOrderComponent, IonOrdersComponent, IonDetailOrderComponent, IonFormProfileComponent, IonListProductComponent, IonFormProductComponent, IonListShopComponent, IonFormShopComponent, IonUploadImageComponent, IonDetailShopComponent, IonListScollXComponent } from "@ngcommerce/core";
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -69,7 +69,8 @@ import { ThamappAuthenProvider } from '../providers/thamapp-authen/thamapp-authe
     IonDetailOrderComponent,
     IonOrdersComponent,
     OrderDetailPage,
-    MomentPipe
+    MomentPipe,
+    IonListScollXComponent
   ],
   imports: [
     BrowserModule,
